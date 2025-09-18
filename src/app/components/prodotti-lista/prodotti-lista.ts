@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
-import { ProdottoService } from '../../services/prodotto.service';
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {Router, RouterModule} from '@angular/router';
+import {ProdottoService} from '../../services/prodotto.service';
 import {Prodotto} from '../../models/prodotto';
 
 
@@ -14,7 +14,8 @@ import {Prodotto} from '../../models/prodotto';
 export class ProdottiListaComponent implements OnInit {
   prodotti: Prodotto[] = [];
 
-  constructor(private prodottoService: ProdottoService, private router: Router) {}
+  constructor(private prodottoService: ProdottoService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.loadProdotti();
@@ -34,11 +35,13 @@ export class ProdottiListaComponent implements OnInit {
 
   eliminaProdotto(id: number): void {
     const conferma = confirm('Sei sicuro di voler eliminare questo prodotto?');
-    if (!conferma) { return; }
+    if (!conferma) {
+      return;
+    }
     this.prodottoService.delete(id).subscribe(() => this.loadProdotti());
   }
 
   modificaProdotto(id: number): void {
-    this.router.navigate(['/prodotti/nuovo'], { queryParams: { id } });
+    this.router.navigate(['/prodotti/nuovo'], {queryParams: {id}});
   }
 }

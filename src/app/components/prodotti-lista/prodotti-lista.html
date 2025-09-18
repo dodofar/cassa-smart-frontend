@@ -1,5 +1,4 @@
 <div class="container py-4">
-  <!-- Header card -->
   <div class="card shadow-sm border-0">
     <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
       <div>
@@ -9,8 +8,6 @@
       <a class="btn btn-primary btn-lg" [routerLink]="['/prodotti/nuovo']">➕ Aggiungi Prodotto</a>
     </div>
   </div>
-
-  <!-- Empty state -->
   <div *ngIf="prodotti.length === 0" class="card border-0 shadow-sm mt-3">
     <div class="card-body text-center py-5">
       <div class="display-6 mb-3">🗂️</div>
@@ -19,8 +16,6 @@
       <a class="btn btn-primary btn-lg" [routerLink]="['/prodotti/nuovo']">➕ Aggiungi Prodotto</a>
     </div>
   </div>
-
-  <!-- Products table -->
   <div *ngIf="prodotti.length > 0" class="card border-0 shadow-sm mt-3">
     <div class="table-responsive">
       <table class="table table-striped table-hover align-middle mb-0">
@@ -39,10 +34,12 @@
           <td><span class="badge text-bg-secondary">{{ p.quantita }}</span></td>
           <td class="text-end">
             <div class="d-inline-flex align-items-center gap-2" role="group" aria-label="Azioni">
-              <button class="btn btn-outline-primary btn-sm rounded-pill" (click)="modificaProdotto(p.id)" aria-label="Modifica prodotto">
+              <button class="btn btn-outline-primary btn-sm rounded-pill" (click)="modificaProdotto(p.id)"
+                      aria-label="Modifica prodotto">
                 <span class="me-1">✏️</span><span class="d-none d-md-inline">Modifica</span>
               </button>
-              <button class="btn btn-danger btn-sm rounded-pill" (click)="eliminaProdotto(p.id)" aria-label="Elimina prodotto">
+              <button class="btn btn-danger btn-sm rounded-pill" (click)="eliminaProdotto(p.id)"
+                      aria-label="Elimina prodotto">
                 <span class="me-1">🗑️</span><span class="d-none d-md-inline">Elimina</span>
               </button>
             </div>
