@@ -42,6 +42,6 @@ export class ProdottiListaComponent implements OnInit {
   }
 
   modificaProdotto(id: number): void {
-    this.router.navigate(['/prodotti/nuovo'], {queryParams: {id}});
+    this.router.navigate(['/prodotti/modifica', id]);
   }
 }

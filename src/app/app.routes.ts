@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 // Pagine Prodotti
 import {ProdottiListaComponent} from './components/prodotti-lista/prodotti-lista';
-import { ProdottoForm } from './components/prodotto-form/prodotto-form';
+import { ProdottoFormComponent } from './components/prodotto-form/prodotto-form';
 
 // Pagine Ordini
 import { OrdiniLista } from './components/ordini-lista/ordini-lista';
@@ -16,8 +16,8 @@ export const routes: Routes = [
 
   // Prodotti
   { path: 'prodotti', component: ProdottiListaComponent },
-  { path: 'prodotti/nuovo', component: ProdottoForm },
-  { path: 'prodotti/modifica/:id', component: ProdottoForm },
+  { path: 'prodotti/nuovo', component: ProdottoFormComponent },
+  { path: 'prodotti/modifica/:id', component: ProdottoFormComponent },
 
   // Ordini
   { path: 'ordini', component: OrdiniLista },

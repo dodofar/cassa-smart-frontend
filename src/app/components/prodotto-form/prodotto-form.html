@@ -1,1 +1,19 @@
-<p>prodotto-form works!</p>
+<div class="container mt-3">
+  <h2>{{ isEdit ? 'Modifica Prodotto' : 'Nuovo Prodotto' }}</h2>
+  <form (ngSubmit)="salva()">
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input [(ngModel)]="prodotto.nome" name="nome" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Prezzo</label>
+      <input [(ngModel)]="prodotto.prezzo" name="prezzo" type="number" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Quantità</label>
+      <input [(ngModel)]="prodotto.quantita" name="quantita" type="number" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Salva</button>
+    <button class="btn btn-secondary ms-2" [routerLink]="['/prodotti']">Annulla</button>
+  </form>
+</div>
