@@ -5,7 +5,7 @@ import {ProdottiListaComponent} from './components/prodotti-lista/prodotti-lista
 import { ProdottoFormComponent } from './components/prodotto-form/prodotto-form';
 
 // Pagine Ordini
-import { OrdiniLista } from './components/ordini-lista/ordini-lista';
+import { OrdiniListaComponent} from './components/ordini-lista/ordini-lista';
 import { OrdineForm } from './components/ordine-form/ordine-form';
 
 // Statistiche
@@ -20,7 +20,7 @@ export const routes: Routes = [
   { path: 'prodotti/modifica/:id', component: ProdottoFormComponent },
 
   // Ordini
-  { path: 'ordini', component: OrdiniLista },
+  { path: 'ordini', component: OrdiniListaComponent },
   { path: 'ordini/nuovo', component: OrdineForm },
   { path: 'ordini/modifica/:id', component: OrdineForm },
 

@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { OrdineService } from '../../services/ordine.service';
+import {Ordine} from '../../models/ordine';
+
 
 @Component({
   selector: 'app-ordini-lista',
-  imports: [],
-  templateUrl: './ordini-lista.html',
-  styleUrl: './ordini-lista.css'
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './ordini-lista.html'
 })
-export class OrdiniLista {
+export class OrdiniListaComponent implements OnInit {
+  ordini: Ordine[] = [];
 
+  constructor(private ordineService: OrdineService) {}
+
+  ngOnInit(): void {
+    this.ordineService.getAll().subscribe(data => this.ordini = data);
+  }
 }
