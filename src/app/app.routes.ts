@@ -24,6 +24,7 @@ export const routes: Routes = [
   { path: 'ordini/nuovo', component: OrdineForm },
   { path: 'ordini/modifica/:id', component: OrdineForm },
 
+
   // Statistiche
   { path: 'statistiche', component: Statistiche },
 

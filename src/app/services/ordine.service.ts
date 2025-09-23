@@ -13,19 +13,35 @@ export class OrdineService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Ordine[]> {
-    return this.http.get<any[]>(this.apiUrl).pipe(
-      map((arr) => (arr || []).map((o: any) => ({
-        id: o.id ?? o.ordineId ?? 0,
-        dataCreazione: o.dataCreazione ?? o.data ?? o.createdAt ?? '',
-        totale: Number(o.totale ?? o.importoTotale ?? o.total ?? 0),
-        item: (o.item ?? o.items ?? []).map((it: any) => ({
-          id: it.id ?? 0,
-          prodottoId: it.prodottoId ?? it.productId ?? it.prodotto?.id ?? 0,
-          nomeProdotto: it.nomeProdotto ?? it.productName ?? it.prodotto?.nome ?? '',
-          quantita: Number(it.quantita ?? it.quantity ?? 0),
-          prezzoTotale: Number(it.prezzoTotale ?? it.totalPrice ?? 0)
-        }))
-      } as Ordine)))
+    return this.http.get(this.apiUrl, { responseType: 'text' }).pipe(
+      map((txt: string) => {
+        let data: any;
+        try {
+          data = JSON.parse(txt);
+        } catch (e) {
+          // Try to salvage array payloads that contain extra characters
+          const start = txt.indexOf('[');
+          const end = txt.lastIndexOf(']');
+          if (start !== -1 && end !== -1 && end > start) {
+            try { data = JSON.parse(txt.substring(start, end + 1)); } catch (_) { data = []; }
+          } else {
+            data = [];
+          }
+        }
+        const arr = Array.isArray(data) ? data : (data?.data ?? data?.content ?? []);
+        return (arr || []).map((o: any) => ({
+          id: o.id ?? o.ordineId ?? 0,
+          dataCreazione: o.dataCreazione ?? o.data ?? o.createdAt ?? '',
+          totale: Number(o.totale ?? o.importoTotale ?? o.total ?? 0),
+          item: (o.item ?? o.items ?? []).map((it: any) => ({
+            id: it.id ?? 0,
+            prodottoId: it.prodottoId ?? it.productId ?? it.prodotto?.id ?? 0,
+            nomeProdotto: it.nomeProdotto ?? it.productName ?? it.prodotto?.nome ?? '',
+            quantita: Number(it.quantita ?? it.quantity ?? 0),
+            prezzoTotale: Number(it.prezzoTotale ?? it.totalPrice ?? 0)
+          }))
+        } as Ordine));
+      })
     );
   }
 

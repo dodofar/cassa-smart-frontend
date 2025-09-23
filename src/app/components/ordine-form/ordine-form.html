@@ -1,1 +1,55 @@
-<p>ordine-form works!</p>
+<div class="container mt-3">
+  <h2>{{ isEdit ? 'Modifica Ordine' : 'Nuovo Ordine' }}</h2>
+
+  <form (ngSubmit)="salva()">
+    <div class="row g-2 align-items-end mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Prodotto</label>
+        <select class="form-select" [(ngModel)]="selectedProdottoId" name="prodotto">
+          <option [ngValue]="null">Seleziona un prodotto...</option>
+          <option *ngFor="let p of prodotti" [ngValue]="p.id">{{ p.nome }} ({{ p.prezzo | currency:'EUR' }})</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Quantità</label>
+        <input type="number" min="1" class="form-control" [(ngModel)]="selectedQuantita" name="quantita">
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary w-100" (click)="addItem()">Aggiungi</button>
+      </div>
+    </div>
+
+    <div *ngIf="ordine.item.length === 0" class="alert alert-info">Nessun articolo aggiunto.</div>
+
+    <table *ngIf="ordine.item.length > 0" class="table table-striped">
+      <thead>
+      <tr>
+        <th>Prodotto</th>
+        <th class="text-end">Quantità</th>
+        <th class="text-end">Totale riga</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let r of ordine.item; let i = index">
+        <td>{{ r.nomeProdotto }}</td>
+        <td class="text-end">{{ r.quantita }}</td>
+        <td class="text-end">{{ r.prezzoTotale | currency:'EUR' }}</td>
+        <td class="text-end"><button type="button" class="btn btn-sm btn-outline-danger" (click)="removeItem(i)">Rimuovi</button></td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th colspan="2" class="text-end">Totale ordine</th>
+        <th class="text-end">{{ ordine.totale | currency:'EUR' }}</th>
+        <th></th>
+      </tr>
+      </tfoot>
+    </table>
+
+    <div class="mt-3">
+      <button type="submit" class="btn btn-success" [disabled]="ordine.item.length===0">Salva</button>
+      <a class="btn btn-secondary ms-2" [routerLink]="['/ordini']">Annulla</a>
+    </div>
+  </form>
+</div>
