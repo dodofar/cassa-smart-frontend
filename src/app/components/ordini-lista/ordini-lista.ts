@@ -19,4 +19,19 @@ export class OrdiniListaComponent implements OnInit {
   ngOnInit(): void {
     this.ordineService.getAll().subscribe(data => this.ordini = data);
   }
+
+  deleteOrdine(o: Ordine): void {
+    if (!o || !o.id) return;
+    const ok = confirm(`Eliminare l'ordine #${o.id}?`);
+    if (!ok) return;
+    this.ordineService.delete(o.id).subscribe({
+      next: () => {
+        this.ordini = this.ordini.filter(or => or.id !== o.id);
+      },
+      error: (err) => {
+        console.error('Errore eliminazione ordine', err);
+        alert('Errore durante l\'eliminazione dell\'ordine.');
+      }
+    });
+  }
 }

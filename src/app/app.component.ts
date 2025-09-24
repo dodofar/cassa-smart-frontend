@@ -9,7 +9,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   template: `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-1 mb-3 shadow-sm sticky-top">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">🏪 Gestione Ordini</a>
+        <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">Gestione Ordini</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,19 +21,19 @@ import { RouterModule, RouterOutlet } from '@angular/router';
             <li class="nav-item">
               <a class="nav-link" routerLink="/prodotti" routerLinkActive="active"
                  [routerLinkActiveOptions]="{ exact: false }">
-                📦 Prodotti
+                 Prodotti
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="/ordini" routerLinkActive="active"
                  [routerLinkActiveOptions]="{ exact: false }">
-                🛒 Ordini
+                 Ordini
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="/statistiche" routerLinkActive="active"
                  [routerLinkActiveOptions]="{ exact: true }">
-                📈 Statistiche
+                 Statistiche
               </a>
             </li>
           </ul>

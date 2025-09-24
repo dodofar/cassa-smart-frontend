@@ -1,1 +1,35 @@
-<p>statistiche works!</p>
+<div class="container">
+  <h2>Statistiche vendite</h2>
+
+  <div class="btn-group mb-3">
+    <button class="btn" [class.btn-primary]="view==='giorno'" [class.btn-outline-primary]="view!=='giorno'" (click)="setView('giorno')">Giornaliero</button>
+    <button class="btn" [class.btn-primary]="view==='mese'" [class.btn-outline-primary]="view!=='mese'" (click)="setView('mese')">Mensile</button>
+    <button class="btn" [class.btn-primary]="view==='anno'" [class.btn-outline-primary]="view!=='anno'" (click)="setView('anno')">Annuale</button>
+  </div>
+
+  <div *ngIf="loading">Caricamento statistiche...</div>
+  <div *ngIf="!loading && points.length === 0">Nessun dato disponibile.</div>
+
+  <div *ngIf="!loading && points.length > 0">
+    <div class="totale mt-3">
+      Totale selezione: <strong>{{ somma | currency:'EUR' }}</strong>
+    </div>
+
+    <div class="table-responsive mt-3">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Periodo</th>
+          <th>Totale</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of points">
+          <td>{{ p.label }}</td>
+          <td>{{ p.value | currency:'EUR' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

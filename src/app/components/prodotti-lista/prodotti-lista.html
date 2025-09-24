@@ -5,15 +5,15 @@
         <h2 class="h4 mb-0">Lista Prodotti</h2>
         <small class="text-muted" *ngIf="prodotti.length > 0">{{ prodotti.length }} prodotti</small>
       </div>
-      <a class="btn btn-primary btn-lg" [routerLink]="['/prodotti/nuovo']">➕ Aggiungi Prodotto</a>
+      <a class="btn btn-primary btn-lg" [routerLink]="['/prodotti/nuovo']"> Aggiungi Prodotto</a>
     </div>
   </div>
   <div *ngIf="prodotti.length === 0" class="card border-0 shadow-sm mt-3">
     <div class="card-body text-center py-5">
-      <div class="display-6 mb-3">🗂️</div>
+      <div class="display-6 mb-3"></div>
       <h5 class="mb-2">Nessun prodotto disponibile</h5>
       <p class="text-muted mb-4">Inizia aggiungendo il tuo primo prodotto.</p>
-      <a class="btn btn-primary btn-lg" [routerLink]="['/prodotti/nuovo']">➕ Aggiungi Prodotto</a>
+      <a class="btn btn-primary btn-lg" [routerLink]="['/prodotti/nuovo']"> Aggiungi Prodotto</a>
     </div>
   </div>
   <div *ngIf="prodotti.length > 0" class="card border-0 shadow-sm mt-3">
@@ -36,11 +36,11 @@
             <div class="d-inline-flex align-items-center gap-2" role="group" aria-label="Azioni">
               <button class="btn btn-outline-primary btn-sm rounded-pill" (click)="modificaProdotto(p.id)"
                       aria-label="Modifica prodotto">
-                <span class="me-1">✏️</span><span class="d-none d-md-inline">Modifica</span>
+                <span class="me-1"></span><span class="d-none d-md-inline">Modifica</span>
               </button>
               <button class="btn btn-danger btn-sm rounded-pill" (click)="eliminaProdotto(p.id)"
                       aria-label="Elimina prodotto">
-                <span class="me-1">🗑️</span><span class="d-none d-md-inline">Elimina</span>
+                <span class="me-1"></span><span class="d-none d-md-inline">Elimina</span>
               </button>
             </div>
           </td>

@@ -1,22 +1,8 @@
 {
-  "/prodotti/**": {
+  "/api": {
     "target": "http://localhost:8080",
     "secure": false,
-    "logLevel": "debug"
-  },
-  "/prodotti": {
-    "target": "http://localhost:8080",
-    "secure": false,
-    "logLevel": "debug"
-  },
-  "/ordini/**": {
-    "target": "http://localhost:8080",
-    "secure": false,
-    "logLevel": "debug"
-  },
-  "/ordini": {
-    "target": "http://localhost:8080",
-    "secure": false,
-    "logLevel": "debug"
+    "logLevel": "debug",
+    "pathRewrite": { "^/api": "" }
   }
 }
